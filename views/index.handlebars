@@ -1,0 +1,21 @@
+<nav class="navbar navbar-dark bg-dark">
+    <h1 id="navbar-title">Hearthpwn Scraper</h1>
+    <button class="btn-danger">Scrape</button>
+</nav>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        {{!-- <h1 class="display-4">Mongo Scraper</h1>
+        <h2 class="lead">Hearthpwn Edition</h2> --}}
+    </div>
+</div>
+{{#each Articles}}
+<div class="card">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{title}}<button class=" btn btn-success save">Save</button></li>
+        <li class="list-group-item">{{summary}}</li>
+        <li class="list-group-item"><a href="{{link}}">{{link}}</a></li>
+    </ul>
+
+</div>
+{{/each}}
+</div>

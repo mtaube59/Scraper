@@ -1,0 +1,33 @@
+.jumbotron {
+    background-image: url("../img/hearthstone.jpg");
+    height: 500px;
+    width: 100%;
+    background-size: cover;
+    }
+    
+    .jumbotron .container {
+    position: relative;
+    top:100px;
+    }
+.display-4 {
+    color: black;
+    text-align: center;
+    font-size: 100px;
+}
+.lead {
+    color: black;
+    text-align: center;
+    font-size: 55px;
+}
+#navbar-title {
+    color: white;
+}
+body {
+    background-color: #323232;
+}
+.card {
+    margin: 10px;
+}
+.save {
+    float: right;
+}
