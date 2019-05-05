@@ -50,8 +50,13 @@ module.exports = function (app) {
     });
     app.get("/articles", function(req,res){
         db.Article.find({}).then( function(data){
-            console.log(data);
+            // console.log(data);
             res.render("index",{Articles:data})
         })
     })
+    app.get("/", function(req,res){
+        db.Article.find({}).then(function(data){
+            res.render("index", {Articles:data})
+        })
+    });
 }
