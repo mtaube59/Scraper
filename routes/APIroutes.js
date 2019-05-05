@@ -59,4 +59,9 @@ module.exports = function (app) {
             res.render("index", {Articles:data})
         })
     });
+    app.get("/saved", function(req,res){
+        db.Article.find({_id: req.params.id}).then(function(dbArticle){
+            res.json(dbArticle)
+        })
+    })
 }
