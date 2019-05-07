@@ -1,7 +1,16 @@
-<nav class="navbar navbar-dark bg-dark">
-    <h1 class="navbar-title">Hearthpwn Scraper</h1>
-    {{!-- <h5 class="navbar-title">Saved Articles</h5> --}}
-    <button class=" btn btn-danger scrape">Scrape</button>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <h1 class="navbar-brand">Hearthpwn Scraper</h1>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/Saved">Saved Articles</a>
+      </li>
+    </ul>
+  </div>
+    <a href="/scrape"><button class=" btn btn-danger scrape">Scrape</button></a>
 </nav>
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
@@ -12,7 +21,7 @@
 {{#each Articles}}
 <div class="card">
     <ul class="list-group list-group-flush">
-        <li class="list-group-item" id="title">{{title}}<button class=" btn btn-success save">Save</button></li>
+        <li class="list-group-item" id="title">{{title}}<button data-id={{id}} class=" btn btn-success save">Save</button></li>
         <li class="list-group-item">{{summary}}</li>
         <li class="list-group-item"><a href="{{link}}">{{link}}</a></li>
     </ul>

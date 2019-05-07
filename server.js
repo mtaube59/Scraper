@@ -21,12 +21,12 @@ app.engine(
     })
 );
 app.set("view engine", "handlebars");
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/hearthpwn";
 
 mongoose.connect(MONGODB_URI);
 
 require("./routes/APIroutes")(app);
-require("./routes/htmlroutes")(app);
+// require("./routes/htmlroutes")(app);
 
 
 app.listen(PORT, function () {

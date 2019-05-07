@@ -1,6 +1,7 @@
 var cheerio = require("cheerio");
 var axios = require("axios");
 var db = require("../models");
+// require("../public/assets/js/scrape")
 
 module.exports = function (app) {
 
@@ -8,7 +9,7 @@ module.exports = function (app) {
     app.get("/scrape", function (req, res) {
         console.log("deleting database");
         db.Article.remove({}, function (err) {
-                console.log("database removed");
+            console.log("database removed");
 
             // Make a request via axios for the news section of `ycombinator`
             axios.get("https://hearthpwn.com/").then(function (response) {
@@ -41,27 +42,50 @@ module.exports = function (app) {
                             });
                     }
                 });
+                res.redirect("/");
             });
-
-
-            // Send a "Scrape Complete" message to the browser
-            res.send("Scrape Complete");
         });
     });
-    app.get("/articles", function(req,res){
-        db.Article.find({}).then( function(data){
+
+    app.get("/articles", function (req, res) {
+        db.Article.find({}).then(function (data) {
             // console.log(data);
-            res.render("index",{Articles:data})
+            res.render("index", { Articles: data })
         })
     })
-    app.get("/", function(req,res){
-        db.Article.find({}).then(function(data){
-            res.render("index", {Articles:data})
+    app.get("/", function (req, res) {
+        db.Article.find({
+            // saved: false,
+        }).then(function (data) {
+            res.render("index", { Articles: data })
         })
     });
-    app.get("/saved", function(req,res){
-        db.Article.find({_id: req.params.id}).then(function(dbArticle){
+    app.post("/saved/:id", function (req, res) {
+        console.log(req.params.id);
+        db.Article.find({ _id: req.params.id }).then(function (dbArticle) {
+            db.Saved.create({
+                title: dbArticle[0].title,
+                link: dbArticle[0].link,
+                summary: dbArticle[0].summary
+            },
+                function (err, inserted) {
+                    if (err) {
+                        // Log the error if one is encountered during the query
+                        console.log(err);
+                    }
+                    else {
+                        // Otherwise, log the inserted data
+                        console.log(inserted);
+                    }
+                });
+            console.log(dbArticle);
             res.json(dbArticle)
         })
+
     })
-}
+    app.get("/saved", function (req, res) {
+        db.Saved.find({}).then(function (data) {
+            res.render("saved", { saved: data })
+        });
+    });
+    }
