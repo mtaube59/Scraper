@@ -8,6 +8,7 @@ $(document).ready(function(){
             method: "POST"
         }).then(function(response) {
             console.log(response);
+            alert("Article Saved");
             // console.log("Redirecting after scrape!");
             // window.location.href = "/saved"
         });

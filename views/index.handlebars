@@ -18,7 +18,10 @@
         <h2 class="lead">Hearthpwn Edition</h2> --}}
     </div>
 </div>
+
 {{#each Articles}}
+{{#unless saved}}
+
 <div class="card">
     <ul class="list-group list-group-flush">
         <li class="list-group-item" id="title">{{title}}<button data-id={{id}} class=" btn btn-success save">Save</button></li>
@@ -27,5 +30,6 @@
     </ul>
 
 </div>
+{{/unless}}
 {{/each}}
 </div>
